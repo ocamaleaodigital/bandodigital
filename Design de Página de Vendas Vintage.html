@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📜 Carta Secreta Revelada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@1,700;1,900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(135deg, #2a2a2a 0%, #404040 50%, #555555 100%);
+            color: #333333;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Remover partículas flutuantes */
+        .particles {
+            display: none;
+        }
+
+        .particle {
+            display: none;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+        }
+
+        /* Container principal */
+        .parchment-container {
+            max-width: 900px;
+            margin: 50px auto;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Pergaminho */
+        .parchment {
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(120, 90, 70, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(140, 100, 80, 0.06) 0%, transparent 50%),
+                linear-gradient(45deg, #f6f0e6 0%, #f0e8d8 25%, #f2ebdc 50%, #f0e8d8 75%, #f6f0e6 100%);
+            border: 8px solid #6b8e23;
+            border-radius: 15px;
+            padding: 60px 80px;
+            box-shadow: 
+                0 0 50px rgba(0, 0, 0, 0.35),
+                inset 0 0 30px rgba(120, 90, 70, 0.08);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .parchment:hover {
+            transform: none;
+            box-shadow: 
+                0 0 60px rgba(0, 0, 0, 0.4),
+                inset 0 0 40px rgba(120, 90, 70, 0.12);
+        }
+
+        /* Bordas decorativas */
+        .parchment::before,
+        .parchment::after {
+            content: '';
+            position: absolute;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M10,10 Q50,30 90,10 Q70,50 90,90 Q50,70 10,90 Q30,50 10,10" fill="none" stroke="%23556b2f" stroke-width="2"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .parchment::before {
+            top: -15px;
+            left: -15px;
+            width: 60px;
+            height: 60px;
+            opacity: 0.5;
+        }
+
+        .parchment::after {
+            bottom: -15px;
+            right: -15px;
+            width: 60px;
+            height: 60px;
+            opacity: 0.5;
+            transform: rotate(180deg);
+        }
+
+        /* Cabeçalho */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 3px double #6b8e23;
+            padding-bottom: 30px;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #333333;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 1.5rem;
+            color: #333333;
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        /* Remover selo */
+        .seal {
+            display: none;
+        }
+
+        /* Conteúdo */
+        .content {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            text-align: left;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .content p {
+            margin-bottom: 25px;
+            opacity: 1;
+        }
+
+        .content p:nth-child(1) { animation-delay: 0.5s; }
+        .content p:nth-child(2) { animation-delay: 0.7s; }
+        .content p:nth-child(3) { animation-delay: 0.9s; }
+        .content p:nth-child(4) { animation-delay: 1.1s; }
+        .content p:nth-child(5) { animation-delay: 1.3s; }
+        .content p:nth-child(6) { animation-delay: 1.5s; }
+        .content p:nth-child(7) { animation-delay: 1.7s; }
+        .content p:nth-child(8) { animation-delay: 1.9s; }
+        .content p:nth-child(9) { animation-delay: 2.1s; }
+        .content p:nth-child(10) { animation-delay: 2.3s; }
+        .content p:nth-child(11) { animation-delay: 2.5s; }
+        .content p:nth-child(12) { animation-delay: 2.7s; }
+        .content p:nth-child(13) { animation-delay: 2.9s; }
+        .content p:nth-child(14) { animation-delay: 3.1s; }
+        .content p:nth-child(15) { animation-delay: 3.3s; }
+        .content p:nth-child(16) { animation-delay: 3.5s; }
+        .content p:nth-child(17) { animation-delay: 3.7s; }
+        .content p:nth-child(18) { animation-delay: 3.9s; }
+        .content p:nth-child(19) { animation-delay: 4.1s; }
+        .content p:nth-child(20) { animation-delay: 4.3s; }
+        .content p:nth-child(21) { animation-delay: 4.5s; }
+        .content p:nth-child(22) { animation-delay: 4.7s; }
+        .content p:nth-child(23) { animation-delay: 4.9s; }
+        .content p:nth-child(24) { animation-delay: 5.1s; }
+        .content p:nth-child(25) { animation-delay: 5.3s; }
+
+        @keyframes typewriter {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .highlight {
+            background: none;
+            padding: 0;
+            border-radius: 0;
+            font-weight: 700;
+            color: #333333;
+            box-shadow: none;
+            border: none;
+            position: relative;
+        }
+
+        .highlight::before {
+            display: none;
+        }
+
+        /* CTA Button */
+        .cta-section {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #6b8e23 0%, #7ba428 50%, #6b8e23 100%);
+            color: #f6f0e6;
+            padding: 20px 50px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 3px solid #556b2f;
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.3),
+                inset 0 2px 10px rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 
+                0 15px 40px rgba(0, 0, 0, 0.4),
+                inset 0 2px 15px rgba(255, 255, 255, 0.15);
+        }
+
+        .cta-button:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+
+        /* Assinatura */
+        .signature {
+            margin-top: 60px;
+            text-align: right;
+            border-top: 2px solid #6b8e23;
+            padding-top: 30px;
+        }
+
+        .signature .name {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 2.5rem;
+            color: #333333;
+            margin-bottom: 10px;
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        .signature .title {
+            font-size: 1.1rem;
+            color: #333333;
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        /* Efeitos especiais */
+        .ink-stain {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle, rgba(107, 142, 35, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .ink-stain-1 { top: 20%; left: 10%; }
+        .ink-stain-2 { top: 60%; right: 15%; }
+        .ink-stain-3 { bottom: 30%; left: 20%; }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .parchment-container {
+                margin: 20px;
+            }
+            
+            .parchment {
+                padding: 40px 30px;
+            }
+            
+            .content {
+                max-width: 100%;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                font-size: 1.1rem;
+            }
+            
+            .cta-button {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Remover partículas flutuantes -->
+
+    <div class="parchment-container">
+        <div class="parchment">
+            <!-- Manchas de tinta -->
+            <div class="ink-stain ink-stain-1"></div>
+            <div class="ink-stain ink-stain-2"></div>
+            <div class="ink-stain ink-stain-3"></div>
+            
+            <!-- Cabeçalho -->
+            <div class="header">
+                <h1>📜 CARTA CONFIDENCIAL</h1>
+                <div class="subtitle">Para gestores que querem dominar o YouTube Ads</div>
+            </div>
+
+            <!-- Conteúdo -->
+            <div class="content">
+                <p>Você já viu isso acontecer.</p>
+                
+                <p>Mesmo criativo. Mesmo nicho. Mesmo orçamento.</p>
+                
+                <p>Um cara escala no YouTube. <span class="highlight">Você trava.</span></p>
+                
+                <p>Você tenta. Gasta. Nada vende. Ou a conta some. Ou o criativo não passa. Ou o ROI vira fumaça em 48h.</p>
+                
+                <p>A culpa parece ser da plataforma.</p>
+                
+                <p>Mas e se eu te dissesse que o problema não é o Google... <span class="highlight">É o seu mapa mental?</span></p>
+                
+                <div class="section-title">
+                    <span class="emoji">🎯</span>O JOGO SECRETO DO YOUTUBE ADS
+                </div>
+                
+                <p>YouTube Ads é outro jogo.</p>
+                
+                <p>E quase todo mundo tenta jogar com as regras erradas — as regras do Facebook.</p>
+                
+                <p>Você sobe campanha achando que vai "otimizar"... Mas aqui, se você não entende o fluxo completo da plataforma, <span class="highlight">você afunda.</span></p>
+                
+                <p>É por isso que tanta gente desiste.</p>
+                
+                <p>E é por isso que existe o <strong>Bando Digital</strong>.</p>
+                
+                <div class="section-title">
+                    <span class="emoji">🔥</span>ONDE OS VERDADEIROS PLAYERS SE REÚNEM
+                </div>
+                
+                <p>Aqui não tem teoria de palco. Não tem "especialista de thumbnail".</p>
+                
+                <p>Tem gestor real. Tem player rodando múltiplas contas em 6 dígitos. Tem afiliado que saiu do zero e hoje vende ativos dentro da própria comunidade.</p>
+                
+                <p><span class="highlight">Mais de 100 membros.</span> E uma cultura que não tolera amadorismo.</p>
+                
+                <p>Você entra pra aprender. Ou pra sair.</p>
+                
+                <div class="section-title">
+                    <span class="emoji">⚡</span>DUAS ESCOLHAS. DOIS DESTINOS.
+                </div>
+                
+                <p>Você pode continuar como está:</p>
+                
+                <p>• Operando no FB como todo mundo.<br>
+                • Reclamando que o Google persegue.<br>
+                • Perdendo dinheiro em cada teste cego.</p>
+                
+                <p>Ou pode virar o tipo de gestor que:</p>
+                
+                <p>• Cria, aquece e blinda contas com R$50.<br>
+                • Entende por que o criativo reprova antes de subir.<br>
+                • Sabe a diferença entre escalar e explodir.<br>
+                • Faz a plataforma trabalhar pra você.</p>
+                
+                <p>E o mais importante: <span class="highlight">domina uma habilidade que 98% dos gestores ainda acham impossível.</span></p>
+                
+                <div class="section-title">
+                    <span class="emoji">💰</span>PROVA REAL: R$12.730 EM 23 DIAS
+                </div>
+                
+                <p>O Pedro era um desses.</p>
+                
+                <p>Afiliado que já vendia bem no FB. Tentou YouTube 3 vezes — só prejuízo.</p>
+                
+                <p>Entrou pro Bando com 1 meta: parar de depender de terceiros.</p>
+                
+                <p>Em 23 dias:</p>
+                
+                <p>• Rodou campanha full com criativo novo e conta criada do zero.<br>
+                • Aprovou sem trava.<br>
+                • Bateu <span class="highlight">R$12.730 de lucro líquido</span> com ROAS 4.7.</p>
+                
+                <p>Detalhe: o mesmo produto que ele já tinha tentado rodar antes.</p>
+                
+                <p>A diferença? <span class="highlight">Ele parou de rodar YouTube como se fosse Facebook.</span></p>
+                
+                <div class="section-title">
+                    <span class="emoji">🚫</span>CHEGA DE DESCULPAS FRACAS
+                </div>
+                
+                <p>"Ah, mas YouTube é difícil."</p>
+                
+                <p>Difícil é ficar preso em plataforma que limita seu crescimento.</p>
+                
+                <p>"Mas é caro."</p>
+                
+                <p>Caro é gastar R$3.000 em conta fake, criativo reprovado e tráfego que não escala — tudo sem saber o erro.</p>
+                
+                <p>"Mas eu não sei por onde começar."</p>
+                
+                <p>Você não precisa saber.</p>
+                
+                <p>Você só precisa de um lugar onde <span class="highlight">o método já está pronto.</span> Validado. Testado. Com suporte técnico real. E gente grande disposta a jogar junto.</p>
+                
+                <div class="section-title">
+                    <span class="emoji">🎯</span>ACESSO RESTRITO - NÃO É PRA TODO MUNDO
+                </div>
+                
+                <p>O <strong>Bando Digital</strong> é uma assinatura de 6 meses. Você paga <span class="highlight">R$2.500 pra entrar.</span> Depois, se quiser continuar, renova por R$997.</p>
+                
+                <p>Só que tem um detalhe: <strong>A gente não vende pra todo mundo.</strong></p>
+                
+                <p>Se você:</p>
+                
+                <p>• Vive de desculpa.<br>
+                • Culpou todos os cursos que fez.<br>
+                • Acha que o problema é o algoritmo…</p>
+                
+                <p><span class="highlight">...essa comunidade NÃO é pra você.</span></p>
+                
+                <p>Agora — se você sabe que está travado mas está pronto pra dominar esse jogo com quem já joga…</p>
+                
+                <p>A porta está aberta.</p>
+                
+                <p><strong>Mas não por muito tempo.</strong></p>
+                
+                <div class="section-title">
+                    <span class="emoji">🔥</span>ÚLTIMA CHANCE - ESCOLHA AGORA
+                </div>
+                
+                <p>Você pode sair dessa página agora.</p>
+                
+                <p>Voltar pros seus testes. Gastar mais em conta bloqueada. Xingar o Google no grupo. E se convencer que "não era pra ser".</p>
+                
+                <p>Ou pode fazer parte da única comunidade do Brasil focada em <span class="highlight">desbloquear escala previsível no YouTube</span> — com metodologia, suporte e gente real que vive disso.</p>
+                
+                <p><strong>O que você vai escolher?</strong></p>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="cta-section">
+                <a href="#" class="cta-button" onclick="entrarNoBando()">
+                    🚀 QUERO ENTRAR NO BANDO DIGITAL
+                </a>
+                <p style="margin-top: 20px; font-size: 0.9rem; color: #a0522d; font-style: italic;">
+                    ⚠️ Vagas limitadas • Processo seletivo ativo
+                </p>
+            </div>
+
+            <!-- Assinatura -->
+            <div class="signature">
+                <div class="name">Fundador do Bando Digital</div>
+                <div class="title">Especialista em YouTube Ads • 6 dígitos mensais</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Função do botão CTA
+        function entrarNoBando() {
+            console.log('Botão clicado!'); // Para debug
+            
+            // Efeito visual
+            const button = document.querySelector('.cta-button');
+            if (button) {
+                button.style.transform = 'scale(0.95)';
+                
+                setTimeout(() => {
+                    button.style.transform = 'translateY(-3px)';
+                    
+                    // Aqui você pode adicionar sua lógica de conversão
+                    // Por exemplo: redirecionar para página de checkout
+                    // window.location.href = 'https://sua-pagina-de-checkout.com';
+                    
+                    alert('🎯 Redirecionando para o processo seletivo...\n\n💡 Aqui você redirecionaria para sua página de inscrição ou checkout do Bando Digital.');
+                }, 150);
+            }
+        }
+
+        // Verificar se o DOM está carregado
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM carregado!'); // Para debug
+            
+            // Verificar se o botão existe
+            const button = document.querySelector('.cta-button');
+            if (button) {
+                console.log('Botão encontrado!'); // Para debug
+                
+                // Adicionar evento de clique como backup
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    entrarNoBando();
+                });
+            } else {
+                console.error('Botão não encontrado!');
+            }
+            
+            // Teste de hover nos títulos
+            const titles = document.querySelectorAll('.section-title');
+            titles.forEach(title => {
+                title.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.02)';
+                });
+                
+                title.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+        });
+
+        // Função de teste para verificar se JS está funcionando
+        function testarJS() {
+            alert('JavaScript está funcionando perfeitamente! ✅');
+            return true;
+        }
+
+        // Log para confirmar que o script carregou
+        console.log('Script JavaScript carregado com sucesso! ✅');
+    </script>
+</body>
+</html>
